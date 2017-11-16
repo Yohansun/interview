@@ -1,39 +1,23 @@
-给一列没有经过排序的数，计算最长的递增序列有几个
-str = [1, 3, 5, 4, 7]
-a = []
-1.时间复杂度
-（1）时间频度 一个算法执行所耗费的时间，从理论上是不能算出来的，必须上机运行测试才能知道。
-但我们不可能也没有必要对每个算法都上机测试，只需知道哪个算法花费的时间多，哪个算法花费的时间少就可以了。
-并且一个算法花费的时间与算法中语句的执行次数成正比例，哪个算法中语句执行次数多，它花费时间就多。
-一个算法中的语句执行次数称为语句频度或时间频度。记为T(n)。
-2.空间复杂度
-一个程序的空间复杂度是指运行完一个程序所需内存的大小
-3.背包问题https://github.com/tianyicui/pack/blob/master/V2.pdf
-
-b = 0
-def ji(str, p) #p 代表现在的已有最长数组长度
-	a = str.each_with_index do |s, i|
-		if str[i+1] > str[i]
-			next
-		else
-			if i > p
-				len = i
-			elsif i == p
-				len = p
-				a += 1
-				b = len
-			else
-				len = p
-			end
-			if (str-str[0..i]).size == 0 || len > (str-str[0..i]).size
-				return [a, b, len]
-			else
-				ji(str-str[0..i], len)
-			end
-		end
-	end
+#给一列没有经过排序的数，计算最长的递增子序列有几个
+def ji(str, a=[]) #p 代表现在的已有最长数组长度
+  str.each_with_index do |s, i|
+    if str[i+1].to_i > str[i]
+      next
+    else
+      a << str[0..i]
+      if (str-str[0..i]).size < 1
+        return a
+      else
+        ji(str-str[0..i], a)
+      end
+    end
+  end
 end
-ji str, 0
+str = [1, 3, 5, 4, 7]
+ji(str, a=[])
+p a
+
+
 
 3.在计算机世界，我们一直追求用最小的资源产生最大的价值。
 现在，假设你可以支配m个0和n个1。同时有一些只有0和1组成的字符串。
