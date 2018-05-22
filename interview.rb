@@ -276,3 +276,4 @@ class Node
 
 end
 #https://www.jianshu.com/p/d8e681b46e50
+#bfs＝队列，入队列，出队列；dfs=栈，压栈，出栈
