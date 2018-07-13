@@ -340,3 +340,21 @@ end
 
 
 #1.微服务系统
+
+
+这个例子是两种方式计算阶乘的javascript代码实现，可以在浏览器中，按F12调出控制台，在控制台中进行实验。// 迭代，重复一定的算法，达到想要的目的。数学上二分法，牛顿法是很好的迭代例子
+function iteration(x){
+   var sum=1; 
+   for(x; x>=1; x--){
+       sum = sum*x;
+   }
+}
+// 递归，自身调用自身的迭代就是递归。
+// 但是正式定义好像不是这么说的。这只是我个人理解
+function recursion(x){
+   if(x>1){
+       return x*recursion(x-1);
+   }else{
+       return 1;
+   }
+}
